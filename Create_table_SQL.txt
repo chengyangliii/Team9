@@ -1,0 +1,133 @@
+create table Onset_date_dimension(
+Onset_date_key int,
+Day int,
+Month int,
+Day_of_week int,
+Week_in_year int,
+Weekend bool,
+Holiday bool,
+Season int,
+primary key (Onset_date_key)
+);
+
+create table Reported_date_dimension(
+Reported_date_key int,
+Day int,
+Month int,
+Day_of_week int,
+Week_in_year int,
+Weekend bool,
+Holiday bool,
+Season int,
+primary key (Reported_date_key)
+);
+
+create table Test_date_dimension(
+Test_date_key int,
+Day int,
+Month int,
+Day_of_week int,
+Week_in_year int,
+Weekend bool,
+Holiday bool,
+Season int,
+primary key (Test_date_key)
+);
+
+create table Specimen_date_dimension(
+Specimen_date_key int,
+Day int,
+Month int,
+Day_of_week int,
+Week_in_year int,
+Weekend bool,
+Holiday bool,
+Season int,
+primary key (Specimen_date_key)
+);
+
+create table Mobility_dimension(
+Mobility_key int,
+Metro_area varchar,
+Subregion varchar,
+Province varchar,
+Retail_and_recreation float,
+Grocery_and_pharmacy float,
+Parks float,
+Transit_stations float,
+Workplaces float,
+Residential float,
+primary key (Mobility_key)
+);
+
+create table Special_measures_dimension(
+Special_measures_key int,
+Title varchar,
+Keyword_1 varchar,
+Keyword_2 varchar,
+Start_date date,
+End_date date,
+primary key (Special_measures_key)
+);
+
+create table Weather_dimension(
+Weather_key int,
+Climate_id int,
+Daily_high_temperature float,
+Daily_low_temperature float,
+Daily_mean_temperature float,
+Total_precip float,
+Total_rain float,
+Total_snow float,
+Direction_max_gust float,
+Speed_max_gust float,
+Cooling_degree_days float,
+Heating_degree_days float,
+primary key (weather_key)
+);
+
+create table Phu_location_dimension(
+Phu_location_key int,
+Phu_name varchar,
+Address varchar,
+City varchar,
+Postal_code varchar,
+Province varchar,
+Url varchar,
+Latitude varchar,
+Longitude varchar,
+primary key (phu_location_key)
+);
+
+create table Patient_dimension(
+Patient_key int,
+Gender varchar,
+Age_group varchar,
+Acquisition_group varchar,
+Outbreak_related bool,
+primary key (Patient_key)
+);
+
+create table Fact_table(
+Onset_date_key int,
+Reported_date_key int,
+Test_date_key int,
+Specimen_date_key int,
+Mobility_key int,
+Special_measures_key int,
+Weather_key int,
+Phu_location_key int,
+Patient_key int,
+Resolved bool,
+Unresolved bool,
+Fatal bool,
+foreign key  (Onset_date_key) references Onset_date_dimension(Onset_date_key),
+foreign key  (Reported_date_key) references Reported_date_dimension(Reported_date_key),
+foreign key  (Test_date_key) references Test_date_dimension(Test_date_key),
+foreign key  (Specimen_date_key) references Specimen_date_dimension(Specimen_date_key),
+foreign key  (Mobility_key) references Mobility_dimension(Mobility_key),
+foreign key  (Special_measures_key) references Special_measures_dimension(Special_measures_key),
+foreign key  (Weather_key) references Weather_dimension(Weather_key),
+foreign key  (Phu_location_key) references Phu_location_dimension(Phu_location_key),
+foreign key  (Patient_key) references Patient_dimension(Patient_key)
+);
