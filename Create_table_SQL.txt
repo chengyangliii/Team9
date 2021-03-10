@@ -1,5 +1,6 @@
 create table Date_dimension(
 Date_key int,
+Sasdate int,
 Day int,
 Month int,
 Day_of_week int,
