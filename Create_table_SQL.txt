@@ -1,5 +1,5 @@
-create table Onset_date_dimension(
-Onset_date_key int,
+create table Date_dimension(
+Date_key int,
 Day int,
 Month int,
 Day_of_week int,
@@ -7,44 +7,13 @@ Week_in_year int,
 Weekend bool,
 Holiday bool,
 Season int,
-primary key (Onset_date_key)
+Word_date varchar,
+Timezone_id varchar,
+Timezone varchar,
+Timezone_offset int,
+primary key (Date_key)
 );
 
-create table Reported_date_dimension(
-Reported_date_key int,
-Day int,
-Month int,
-Day_of_week int,
-Week_in_year int,
-Weekend bool,
-Holiday bool,
-Season int,
-primary key (Reported_date_key)
-);
-
-create table Test_date_dimension(
-Test_date_key int,
-Day int,
-Month int,
-Day_of_week int,
-Week_in_year int,
-Weekend bool,
-Holiday bool,
-Season int,
-primary key (Test_date_key)
-);
-
-create table Specimen_date_dimension(
-Specimen_date_key int,
-Day int,
-Month int,
-Day_of_week int,
-Week_in_year int,
-Weekend bool,
-Holiday bool,
-Season int,
-primary key (Specimen_date_key)
-);
 
 create table Mobility_dimension(
 Mobility_key int,
@@ -121,10 +90,10 @@ Patient_key int,
 Resolved bool,
 Unresolved bool,
 Fatal bool,
-foreign key  (Onset_date_key) references Onset_date_dimension(Onset_date_key),
-foreign key  (Reported_date_key) references Reported_date_dimension(Reported_date_key),
-foreign key  (Test_date_key) references Test_date_dimension(Test_date_key),
-foreign key  (Specimen_date_key) references Specimen_date_dimension(Specimen_date_key),
+foreign key  (Onset_date_key) references Date_dimension(Date_key),
+foreign key  (Reported_date_key) references Date_dimension(Date_key),
+foreign key  (Test_date_key) references Date_dimension(Date_key),
+foreign key  (Specimen_date_key) references Date_dimension(Date_key),
 foreign key  (Mobility_key) references Mobility_dimension(Mobility_key),
 foreign key  (Special_measures_key) references Special_measures_dimension(Special_measures_key),
 foreign key  (Weather_key) references Weather_dimension(Weather_key),
