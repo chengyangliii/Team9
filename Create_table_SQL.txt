@@ -5,10 +5,10 @@ Date_key int,
 Word_date varchar,
 Date varchar,
 year int,
-Season int,
+Quarter int,
 Month int,
-Day int,
-Week_in_year int,
+Day_of_month int,
+week int,
 Day_of_week varchar,
 Weekend_flag bool,
 Holiday_flag bool,
@@ -64,6 +64,7 @@ primary key (weather_key)
 
 create table Phu_location_dimension(
 Phu_location_key int,
+ID int,
 Phu_name varchar,
 Address varchar,
 City varchar,
@@ -77,6 +78,7 @@ primary key (phu_location_key)
 
 create table Patient_dimension(
 Patient_key int,
+id int,
 Gender varchar,
 Age_group varchar,
 Acquisition_group varchar,
