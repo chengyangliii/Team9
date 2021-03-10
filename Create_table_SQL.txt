@@ -39,13 +39,13 @@ primary key (Mobility_key)
 create table Special_measures_dimension(
 Special_measures_key int,
 Title varchar,
+Description varchar,
 Keyword_1 varchar,
 Keyword_2 varchar,
-Start_date date,
-End_date date,
+Start_date varchar,
+End_date varchar,
 primary key (Special_measures_key)
 );
-
 create table Weather_dimension(
 Weather_key int,
 Climate_id int,
